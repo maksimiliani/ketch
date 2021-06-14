@@ -5,15 +5,28 @@ $(document).ready( function() {
 
   $("#field_lang").change(function(){
   		tcf_core.empty();
-      var requestURL = 'https://vendor-list.consensu.org/v2/vendor-list.json';
-      var request = new XMLHttpRequest();
 
-      request.open('GET', requestURL);
-      request.responseType = 'json';
-      request.send();
+      var invocation = new XMLHttpRequest();
+      var url = 'https://vendor-list.consensu.org/v2/vendor-list.json';
 
-      request.onload = function() {
-        var tcf_source = request.response;
+      function callOtherDomain() {
+        if(invocation) {
+          invocation.open('GET', url, true);
+          invocation.onreadystatechange = handler;
+          invocation.send();
+        }
+      }
+
+      //
+      // var requestURL = 'https://vendor-list.consensu.org/v2/vendor-list.json';
+      // var request = new XMLHttpRequest();
+      //
+      // request.open('GET', requestURL);
+      // request.responseType = 'json';
+      // request.send();
+
+      invocation.onload = function() {
+        var tcf_source = invocation.response;
         populate_sections(tcf_source);
       }
 
