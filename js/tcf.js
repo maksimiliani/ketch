@@ -1,63 +1,44 @@
 
 // document ready wrapper
 $(document).ready( function() {
+  var tcf_core = $( "#tcf_core" );
 
   $("#field_lang").change(function(){
-  		$( "#tcf_core" ).empty();
+  		tcf_core.empty();
       var requestURL = 'https://vendor-list.consensu.org/v2/vendor-list.json';
-var request = new XMLHttpRequest();
+      var request = new XMLHttpRequest();
 
-request.open('GET', requestURL);
-request.responseType = 'json';
-request.send();
+      request.open('GET', requestURL);
+      request.responseType = 'json';
+      request.send();
 
-request.onload = function() {
-	var superHeroes = request.response;
-	showHeroes(superHeroes);
-}
+      request.onload = function() {
+        var tcf_source = request.response;
+        populate_sections(tcf_source);
+      }
 
-function populateHeader(jsonObj) {
-  var myH1 = document.createElement('h1');
-  myH1.textContent = jsonObj['squadName'];
-  header.appendChild(myH1);
+      function populate_sections(jsonObj) {
 
-  var myPara = document.createElement('p');
-  myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
-  header.appendChild(myPara);
-}
+        var purposes = jsonObj['purposes'];
+        var tcf_section = document.createElement('div');
+        var tcf_h2 = document.createElement('h2');
+        tcf_h2.textContent = "Purposes";
+        tcf_section.appendChild(tcf_h2);
+        for (var i = 0; i < purposes.length; i++) {
+          var tcf_block = document.createElement('div');
+          var tcf_block_title = document.createElement('h4');
+          var tcf_block_p = document.createElement('p');
 
-function showHeroes(jsonObj) {
-  var heroes = jsonObj['members'];
+          tcf_block_title.textContent = purposes[i].name;
+          tcf_block_p.textContent = purposes[i].descriptionLegal;
 
-  for (var i = 0; i < heroes.length; i++) {
-    var myArticle = document.createElement('article');
-    var myH2 = document.createElement('h2');
-    var myPara1 = document.createElement('p');
-    var myPara2 = document.createElement('p');
-    var myPara3 = document.createElement('p');
-    var myList = document.createElement('ul');
+          tcf_block.appendChild(tcf_block_title);
+          tcf_block.appendChild(tcf_block_p);
 
-    myH2.textContent = heroes[i].name;
-    myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
-    myPara2.textContent = 'Age: ' + heroes[i].age;
-    myPara3.textContent = 'Superpowers:';
-
-    var superPowers = heroes[i].powers;
-    for (var j = 0; j < superPowers.length; j++) {
-      var listItem = document.createElement('li');
-      listItem.textContent = superPowers[j];
-      myList.appendChild(listItem);
+          tcf_section.appendChild(tcf_block);
+        }
+        tcf_core.appendChild(tcf_section);
+      }
     }
-
-    myArticle.appendChild(myH2);
-    myArticle.appendChild(myPara1);
-    myArticle.appendChild(myPara2);
-    myArticle.appendChild(myPara3);
-    myArticle.appendChild(myList);
-
-    section.appendChild(myArticle);
-  }
-}
-   });
-
+  });
 });
