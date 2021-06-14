@@ -7,7 +7,7 @@ $(document).ready( function() {
   		tcf_core.empty();
 
       var invocation = new XMLHttpRequest();
-      var url = 'https://vendor-list.consensu.org/v2/vendor-list.json';
+      var url = '../json/vendor-list.json';
 
       function callOtherDomain() {
         if(invocation) {
