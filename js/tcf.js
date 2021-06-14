@@ -39,6 +39,5 @@ $(document).ready( function() {
         }
         tcf_core.appendChild(tcf_section);
       }
-    }
-  });
+    });
 });
