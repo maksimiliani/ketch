@@ -7,7 +7,7 @@ $(document).ready( function() {
   		tcf_core.empty();
 
       var invocation = new XMLHttpRequest();
-      var url = '../json/vendor-list.json';
+      var url = 'https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json';
 
       function callOtherDomain() {
         if(invocation) {
