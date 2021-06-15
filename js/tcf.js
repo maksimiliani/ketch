@@ -20,12 +20,11 @@ $(document).ready( function() {
 
       fetch('https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json')
         .then((response) => {
-          tcf_source = response.json();
-          populate_sections(tcf_source);
+          return response.json();
         })
-        // .then((data) => {
-        //   console.log(data);
-        // });
+        .then((data) => {
+          populate_sections(data);
+        });
 
       // invocation.onload = function() {
       //   tcf_source = invocation.response;
