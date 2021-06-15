@@ -40,6 +40,8 @@ $(document).ready( function() {
         tcf_h2.textContent = "Purposes";
         tcf_section.append(tcf_h2);
         console.log(purposes);
+        console.log(purposes.length);
+        console.log(purposes[0].name);
         for (var i = 0; i < purposes.length; i++) {
           var tcf_block = document.createElement('div');
           var tcf_block_title = document.createElement('h4');
