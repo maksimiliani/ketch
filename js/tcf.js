@@ -52,7 +52,7 @@ $(document).ready( function() {
 
           tcf_section.appendChild(tcf_block);
         }
-        tcf_core.appendChild(tcf_section);
+        tcf_core.append(tcf_section);
       }
     });
 });
