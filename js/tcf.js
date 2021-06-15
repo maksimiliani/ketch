@@ -38,11 +38,12 @@ $(document).ready( function() {
         var tcf_h2 = document.createElement('h2');
         tcf_h2.textContent = "Purposes";
         tcf_section.append(tcf_h2);
+        console.log(purposes.length);
         for (var i = 0; i < purposes.length; i++) {
           var tcf_block = document.createElement('div');
           var tcf_block_title = document.createElement('h4');
           var tcf_block_p = document.createElement('p');
-console.log(purposes[i].name);
+
           tcf_block_title.textContent = purposes[i].name;
           tcf_block_p.textContent = purposes[i].descriptionLegal;
 
