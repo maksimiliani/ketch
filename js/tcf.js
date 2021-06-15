@@ -33,6 +33,7 @@ $(document).ready( function() {
       // }
 
       function populate_sections(jsonObj) {
+        console.log(jsonObj);
 
         var purposes = jsonObj['purposes'];
         var tcf_section = document.createElement('div');
