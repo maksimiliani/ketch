@@ -52,6 +52,7 @@ $(document).ready( function() {
 
           tcf_block.append(tcf_block_title);
           tcf_block.append(tcf_block_p);
+          tcf_block.append(tcf_p_ul);
 
           tcf_section.append(tcf_block);
         }
