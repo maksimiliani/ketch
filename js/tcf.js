@@ -42,6 +42,7 @@ function populate_sections_nested(jsonObj_ref, h2_title) {
     tcf_block_p.setAttribute('class', 'tcf__p');
 
     var tcf_p_ul = document.createElement('ul');
+    tcf_p_ul.setAttribute('class', 'tcf__p');
     var tcf_p_ul_lis = purposes[i].descriptionLegal.split('\n* ');
 
     for (var j = 1; j < tcf_p_ul_lis.length; j++) {
