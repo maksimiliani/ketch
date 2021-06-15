@@ -38,8 +38,17 @@ $(document).ready( function() {
           var tcf_block_p = document.createElement('p');
           tcf_block_p.setAttribute('class', 'tcf__p');
 
+          var tcf_p_ul = document.createElement('ul');
+          var tcf_p_ul_lis = purposes[i].descriptionLegal.split('\n* ');
+
+          for (var j = 1; j < tcf_p_ul_lis.length; j++) {
+            var listItem = document.createElement('li');
+            listItem.textContent = tcf_p_ul_lis[j];
+            tcf_p_ul.append(listItem);
+          }
+
           tcf_block_title.textContent = purposes[i].name;
-          tcf_block_p.textContent = purposes[i].descriptionLegal;
+          tcf_block_p.textContent = tcf_p_ul_lis[0];
 
           tcf_block.append(tcf_block_title);
           tcf_block.append(tcf_block_p);
