@@ -42,7 +42,7 @@ $(document).ready( function() {
           var tcf_block = document.createElement('div');
           var tcf_block_title = document.createElement('h4');
           var tcf_block_p = document.createElement('p');
-
+console.log(purposes[i].name);
           tcf_block_title.textContent = purposes[i].name;
           tcf_block_p.textContent = purposes[i].descriptionLegal;
 
