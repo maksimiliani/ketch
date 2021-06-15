@@ -3,6 +3,7 @@
 $(document).ready( function() {
   var tcf_core = $( "#tcf_core" );
   var tcf_source;
+  var purposes;
 
   $("#field_lang").change(function(){
   		tcf_core.empty();
@@ -33,7 +34,7 @@ $(document).ready( function() {
 
       function populate_sections(jsonObj) {
 
-        var purposes = jsonObj['purposes'];
+        purposes = jsonObj['purposes'];
         var tcf_section = document.createElement('div');
         var tcf_h2 = document.createElement('h2');
         tcf_h2.textContent = "Purposes";
