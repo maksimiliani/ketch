@@ -34,12 +34,10 @@ $(document).ready( function() {
       function populate_sections(jsonObj) {
 
         var purposes = jsonObj['purposes'];
-
-                console.log(purposes);
         var tcf_section = document.createElement('div');
         var tcf_h2 = document.createElement('h2');
         tcf_h2.textContent = "Purposes";
-        tcf_section.appendChild(tcf_h2);
+        tcf_section.append(tcf_h2);
         for (var i = 0; i < purposes.length; i++) {
           var tcf_block = document.createElement('div');
           var tcf_block_title = document.createElement('h4');
@@ -48,10 +46,10 @@ $(document).ready( function() {
           tcf_block_title.textContent = purposes[i].name;
           tcf_block_p.textContent = purposes[i].descriptionLegal;
 
-          tcf_block.appendChild(tcf_block_title);
-          tcf_block.appendChild(tcf_block_p);
+          tcf_block.append(tcf_block_title);
+          tcf_block.append(tcf_block_p);
 
-          tcf_section.appendChild(tcf_block);
+          tcf_section.append(tcf_block);
         }
         tcf_core.append(tcf_section);
       }
