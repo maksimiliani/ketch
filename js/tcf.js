@@ -20,7 +20,7 @@ $(document).ready( function() {
         var purposes_obj = jsonObj['purposes'];
 
         var tcf_section = document.createElement('div');
-        tcf_section.addClass('tcf__section');
+        tcf_section.setAttribute('class', 'tcf__section');
 
         var tcf_h2 = document.createElement('h2');
         tcf_h2.textContent = "Purposes";
@@ -32,11 +32,11 @@ $(document).ready( function() {
 
         for (var i = 0; i < purposes.length; i++) {
           var tcf_block = document.createElement('div');
-          tcf_block.addClass('tcf_block');
+          tcf_block.setAttribute('class', 'tcf_block');
 
           var tcf_block_title = document.createElement('h4');
           var tcf_block_p = document.createElement('p');
-          tcf_block_p.addClass('tcf__p');
+          tcf_block_p.setAttribute('class', 'tcf__p');
 
           tcf_block_title.textContent = purposes[i].name;
           tcf_block_p.textContent = purposes[i].descriptionLegal;
