@@ -7,7 +7,8 @@ $(document).ready( function() {
   $("#field_lang").change(function(){
   		tcf_core.empty();
 
-      fetch('https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json')
+      //fetch('https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json')
+      fetch('https://vendor-list.consensu.org/v2/vendor-list.json')
         .then((response) => {
           return response.json();
         })
