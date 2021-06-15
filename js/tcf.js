@@ -32,9 +32,10 @@ $(document).ready( function() {
       // }
 
       function populate_sections(jsonObj) {
-        console.log(jsonObj);
 
         var purposes = jsonObj['purposes'];
+
+                console.log(purposes);
         var tcf_section = document.createElement('div');
         var tcf_h2 = document.createElement('h2');
         tcf_h2.textContent = "Purposes";
