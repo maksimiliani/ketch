@@ -7,17 +7,6 @@ $(document).ready( function() {
   $("#field_lang").change(function(){
   		tcf_core.empty();
 
-      // var invocation = new XMLHttpRequest();
-      // var url = 'https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json';
-      //
-      // function callOtherDomain() {
-      //   if(invocation) {
-      //     invocation.open('GET', url, true);
-      //     invocation.onreadystatechange = handler;
-      //     invocation.send();
-      //   }
-      // }
-
       fetch('https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json')
         .then((response) => {
           return response.json();
@@ -26,15 +15,13 @@ $(document).ready( function() {
           populate_sections(data);
         });
 
-      // invocation.onload = function() {
-      //   tcf_source = invocation.response;
-      //   populate_sections(tcf_source);
-      // }
-
       function populate_sections(jsonObj) {
 
         var purposes_obj = jsonObj['purposes'];
+
         var tcf_section = document.createElement('div');
+        tcf_section.addClass('tcf__section');
+
         var tcf_h2 = document.createElement('h2');
         tcf_h2.textContent = "Purposes";
         tcf_section.append(tcf_h2);
@@ -43,13 +30,13 @@ $(document).ready( function() {
           return [value];
         });
 
-        console.log(purposes);
-        console.log(purposes.length);
-        console.log(purposes[0].name);
         for (var i = 0; i < purposes.length; i++) {
           var tcf_block = document.createElement('div');
+          tcf_block.addClass('tcf_block');
+
           var tcf_block_title = document.createElement('h4');
           var tcf_block_p = document.createElement('p');
+          tcf_block_p.addClass('tcf__p');
 
           tcf_block_title.textContent = purposes[i].name;
           tcf_block_p.textContent = purposes[i].descriptionLegal;
