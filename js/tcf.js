@@ -1,4 +1,24 @@
 var tcf_core;
+
+function init__(json_link) {
+  tcf_core.empty();
+
+  fetch(json_link)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      populate_sections(data);
+    });
+
+  function populate_sections(jsonObj) {
+    populate_sections_nested(jsonObj['purposes'], "Purposes");
+    populate_sections_nested(jsonObj['specialPurposes'], "Special Purposes");
+    populate_sections_nested(jsonObj['features'], "Features");
+    populate_sections_nested(jsonObj['specialFeatures'], "Special Features");
+  }
+}
+
 function populate_sections_nested(jsonObj_ref, h2_title) {
   var purposes_obj = jsonObj_ref;
 
@@ -45,24 +65,9 @@ function populate_sections_nested(jsonObj_ref, h2_title) {
 // document ready wrapper
 $(document).ready( function() {
   tcf_core = $( "#tcf_core" );
+  init__( $("#field_lang")[0].value );
 
   $("#field_lang").change(function(){
-  		tcf_core.empty();
-
-      //fetch('https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json')
-      fetch( $("#field_lang")[0].value )
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          populate_sections(data);
-        });
-
-      function populate_sections(jsonObj) {
-        populate_sections_nested(jsonObj['purposes'], "Purposes");
-        populate_sections_nested(jsonObj['specialPurposes'], "Special Purposes");
-        populate_sections_nested(jsonObj['features'], "Features");
-        populate_sections_nested(jsonObj['specialFeatures'], "Special Features");
-      }
-    });
+    init__( $("#field_lang")[0].value );
+  });
 });
