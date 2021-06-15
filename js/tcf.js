@@ -2,33 +2,35 @@
 // document ready wrapper
 $(document).ready( function() {
   var tcf_core = $( "#tcf_core" );
+  var tcf_source;
 
   $("#field_lang").change(function(){
   		tcf_core.empty();
 
-      var invocation = new XMLHttpRequest();
-      var url = 'https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json';
-
-      function callOtherDomain() {
-        if(invocation) {
-          invocation.open('GET', url, true);
-          invocation.onreadystatechange = handler;
-          invocation.send();
-        }
-      }
-
+      // var invocation = new XMLHttpRequest();
+      // var url = 'https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json';
       //
-      // var requestURL = 'https://vendor-list.consensu.org/v2/vendor-list.json';
-      // var request = new XMLHttpRequest();
-      //
-      // request.open('GET', requestURL);
-      // request.responseType = 'json';
-      // request.send();
+      // function callOtherDomain() {
+      //   if(invocation) {
+      //     invocation.open('GET', url, true);
+      //     invocation.onreadystatechange = handler;
+      //     invocation.send();
+      //   }
+      // }
 
-      invocation.onload = function() {
-        var tcf_source = invocation.response;
-        populate_sections(tcf_source);
-      }
+      fetch('https://cdn.jsdelivr.net/gh/maksimiliani/ketch@13d8b5c/json/vendor-list.json')
+        .then((response) => {
+          tcf_source = response.json();
+          populate_sections(tcf_source);
+        })
+        // .then((data) => {
+        //   console.log(data);
+        // });
+
+      // invocation.onload = function() {
+      //   tcf_source = invocation.response;
+      //   populate_sections(tcf_source);
+      // }
 
       function populate_sections(jsonObj) {
 
