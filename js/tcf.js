@@ -35,7 +35,7 @@ function populate_sections_nested(jsonObj_ref, h2_title) {
 
   for (var i = 0; i < purposes.length; i++) {
     var tcf_block = document.createElement('div');
-    tcf_block.setAttribute('class', 'tcf_block');
+    tcf_block.setAttribute('class', 'tcf__block');
 
     var tcf_block_title = document.createElement('h4');
     var tcf_block_p = document.createElement('p');
