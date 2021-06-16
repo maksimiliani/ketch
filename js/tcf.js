@@ -48,7 +48,7 @@ function populate_sections_nested(jsonObj_ref, h2_title) {
     for (var j = 1; j < tcf_p_ul_lis.length; j++) {
       if (tcf_p_ul_lis[j] == "") continue;
       var listItem = document.createElement('li');
-      listItem.textContent = tcf_p_ul_lis[j].replace(/\u9679 |\u42 /, "");
+      listItem.textContent = tcf_p_ul_lis[j].replace(/\u9679|\u42/, "");
       tcf_p_ul.append(listItem);
     }
 
