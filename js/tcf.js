@@ -43,7 +43,7 @@ function populate_sections_nested(jsonObj_ref, h2_title) {
 
     var tcf_p_ul = document.createElement('ul');
     tcf_p_ul.setAttribute('class', 'tcf__p');
-    var tcf_p_ul_lis = purposes[i].descriptionLegal.split('\n* ');
+    var tcf_p_ul_lis = purposes[i].descriptionLegal.split('\n'); // was .split('\n* ');
 
     for (var j = 1; j < tcf_p_ul_lis.length; j++) {
       var listItem = document.createElement('li');
