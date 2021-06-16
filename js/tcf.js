@@ -38,27 +38,32 @@ function populate_sections_nested(jsonObj_ref, h2_title) {
     tcf_block.setAttribute('class', 'tcf__block');
 
     var tcf_block_title = document.createElement('h4');
-    var tcf_block_p = document.createElement('p');
-    tcf_block_p.setAttribute('class', 'tcf__p');
+    tcf_block_title.textContent = purposes[i].name;
+    //tcf_block_p.textContent = tcf_p_ul_lis[0];
+    tcf_block.append(tcf_block_title);
 
-    var tcf_p_ul = document.createElement('ul');
-    tcf_p_ul.setAttribute('class', 'tcf__p');
     var tcf_p_ul_lis = purposes[i].descriptionLegal.split('\n'); // was .split('\n* ');
 
-    for (var j = 1; j < tcf_p_ul_lis.length; j++) {
+    var tcf_block_p;
+    var tcf_p_ul;
+    for (var j = 0; j < tcf_p_ul_lis.length; j++) {
       if (tcf_p_ul_lis[j] == "") continue;
-      var listItem = document.createElement('li');
-      listItem.textContent = tcf_p_ul_lis[j].replace(/\u9679|\u42/, "");
-      tcf_p_ul.append(listItem);
+      if ((tcf_p_ul_lis[j].indexOf("*") == -1) || (tcf_p_ul_lis[j].indexOf("●") == -1)) {
+        tcf_block_p = document.createElement('p');
+        tcf_block_p.setAttribute('class', 'tcf__p');
+        tcf_block_p.textContent = tcf_p_ul_lis[j];
+
+        tcf_p_ul = document.createElement('ul');
+        tcf_p_ul.setAttribute('class', 'tcf__p');
+
+        tcf_block.append(tcf_block_p);
+        tcf_block.append(tcf_p_ul);
+      } else {
+        var listItem = document.createElement('li');
+        listItem.textContent = tcf_p_ul_lis[j].replace(/[*] /, "").replace(/[●] /, "");
+        tcf_p_ul.append(listItem);
+      }
     }
-
-    tcf_block_title.textContent = purposes[i].name;
-    tcf_block_p.textContent = tcf_p_ul_lis[0];
-
-    tcf_block.append(tcf_block_title);
-    tcf_block.append(tcf_block_p);
-    tcf_block.append(tcf_p_ul);
-
     tcf_section.append(tcf_block);
   }
   tcf_core.append(tcf_section);
