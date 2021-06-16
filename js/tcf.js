@@ -48,7 +48,7 @@ function populate_sections_nested(jsonObj_ref, h2_title) {
     var tcf_p_ul;
     for (var j = 0; j < tcf_p_ul_lis.length; j++) {
       if (tcf_p_ul_lis[j] == "") continue;
-      if ((tcf_p_ul_lis[j].indexOf("*") == -1) || (tcf_p_ul_lis[j].indexOf("●") == -1)) {
+      if ((tcf_p_ul_lis[j].indexOf("*") == -1)) {   //|| (tcf_p_ul_lis[j].indexOf("●") == -1)
         tcf_block_p = document.createElement('p');
         tcf_block_p.setAttribute('class', 'tcf__p');
         tcf_block_p.textContent = tcf_p_ul_lis[j];
