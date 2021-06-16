@@ -42,13 +42,15 @@ function populate_sections_nested(jsonObj_ref, h2_title) {
     //tcf_block_p.textContent = tcf_p_ul_lis[0];
     tcf_block.append(tcf_block_title);
 
+    var search_for_divider = "*";
+    if (purposes[i].descriptionLegal.indexOf("●") > -1) search_for_divider = "●";
     var tcf_p_ul_lis = purposes[i].descriptionLegal.split('\n'); // was .split('\n* ');
 
     var tcf_block_p;
     var tcf_p_ul;
     for (var j = 0; j < tcf_p_ul_lis.length; j++) {
       if (tcf_p_ul_lis[j] == "") continue;
-      if ((tcf_p_ul_lis[j].indexOf("*") == -1)) {   //|| (tcf_p_ul_lis[j].indexOf("●") == -1)
+      if (tcf_p_ul_lis[j].indexOf(search_for_divider) == -1) {
         tcf_block_p = document.createElement('p');
         tcf_block_p.setAttribute('class', 'tcf__p');
         tcf_block_p.textContent = tcf_p_ul_lis[j];
@@ -60,7 +62,7 @@ function populate_sections_nested(jsonObj_ref, h2_title) {
         tcf_block.append(tcf_p_ul);
       } else {
         var listItem = document.createElement('li');
-        listItem.textContent = tcf_p_ul_lis[j].replace(/[*] /, "").replace(/[●] /, "");
+        listItem.textContent = tcf_p_ul_lis[j].replace(/[*] /, "").replace(/[●] /, "").replace(/[*]/, "").replace(/[●]/, "");
         tcf_p_ul.append(listItem);
       }
     }
