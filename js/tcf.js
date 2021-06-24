@@ -1,7 +1,6 @@
 var tcf_core;
 
 function init__(json_link) {
-  $('.tcf__section_container').addClass('transparent');
   tcf_core.empty();
 
   fetch(json_link)
@@ -18,7 +17,6 @@ function init__(json_link) {
     populate_sections_nested(jsonObj['features'], "Features");
     populate_sections_nested(jsonObj['specialFeatures'], "Special Features");
   }
-  $('.tcf__section_container').removeClass('transparent');
 }
 
 function populate_sections_nested(jsonObj_ref, h2_title) {
